@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+	</head>
+	<body>
+		<h1 id="d1"></h1>
+		<div id="ta1" style="width:300px;height:300px;border:2px solid"></div><br>
+		<input type="text" id="t1" width="300"><button onclick="anc()">Send</button>
+		<script>
+			var socket = io();
+			socket.on("message",function(data){
+				document.getElementById("d1").innerHTML = data;
+			});
+			socket.on("broadcast",function(data){
+				var msg = data.senderid+":"+data.d;
+				document.getElementById("ta1").innerHTML += msg+"<br>";
+			});
+			function anc(){
+				socket.send(document.getElementById("t1").value);
+			}
+		</script>
+	</body>
+</html>

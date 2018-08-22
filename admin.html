@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+	</head>
+	<body>
+		
+		<input type="text" id="t1" width="300"><button onclick="anc()">Send</button>
+		<script>
+			var socket = io();			
+			function anc(){
+				socket.send(document.getElementById("t1").value);
+			}
+		</script>
+	</body>
+</html>
